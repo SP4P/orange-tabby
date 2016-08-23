@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Detailed Pet Info</title>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.1/themes/ui-darkness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+    <script type="text/javascript" src="js/superfish.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    <script language="javascript" type="text/javascript">
+$(document).ready(function(){
+//When we click on thumb img
+$('.thumb li', '.popslideshow').click(function() {
+    var
+        //popslideshow
+        sshow = $(this).closest('.popslideshow'),
+        //Big
+        big = sshow.find('.big'),
+        //thumb
+        thumb = sshow.find('.thumb'),
+        //Get index
+        indx = thumb.find('li').index(this),
+        //Current index
+        currentIndx = big.find('li').index(big.find('li:visible'));
+
+    //If currentIndx is same as clicked indx don't do anything
+    if(currentIndx == indx) {
+        return;
+    }
+
+    big
+        //Fadeout current image
+        .find('li:visible').fadeOut().end()
+        //Fadein new image
+        .find('li:eq(' + indx + ')').fadeIn();
+});
+
+//When we click on any li inside controls section
+$('.controls li').click(function() {
+    var
+        //popslideshow
+        sshow = $(this).closest('.popslideshow'),
+        //Increment
+        incr = $(this).hasClass('prev') ? -1 : 1,
+        //Current Index
+        currentIndx = sshow.find('.big li').index(sshow.find('.big li:visible')),
+        //Final Index
+        finalIndx = currentIndx + incr;
+
+    //Check ranges
+    finalIndx = (finalIndx >= 3) ? 0 : ( (finalIndx < 0) ? 3 : finalIndx);
+
+    //Now trigger click event on respective image in nav
+    sshow.find('.thumb li:eq(' + finalIndx + ')').trigger('click');
+});
+
+});
+</script>
+</head>
+<body>
+<h2 style="text-align: center;">Boo</h2>
+
+<table  border="0">
+<tbody>
+<tr>
+<td width="150">
+<div class="news-item">
+<p><b>Adoption Date</b>: 1/3/2016
+<br />
+<p><b>Intake Date</b>: 10/23/2015
+<br />
+</div>
+</td>
+<td valign="top">
+<div class="popslideshow"  align="center">
+    <ul class='big'>
+        <li>
+            <img src="images/Boo4.jpg" />
+        </li>
+        <li>
+            <img src="images/Boo5.jpg" />
+        </li>
+	
+		<li>
+			<img src="images/Boo1.jpg" />
+        </li>
+    </ul>
+    <ul class='controls'>
+        <li class='prev'>&lt;</li>
+        <li class='next'>&gt;</li>
+    </ul>
+    <ul class='thumb'>
+        <li>
+            <img src="images/Boo4.jpg" />
+        </li>
+        <li>
+            <img src="images/Boo5.jpg" />
+        </li>
+	
+		<li>
+			<img src="images/Boo1.jpg" />
+        </li>
+    </ul>
+</div></td>
+</tr>
+<tr>
+<td colspan="2" rowspan="1">
+<div class="news-item">
+<h3>Adoption Announcement - 1/3/2016</h3>
+<p>Boo, a very lovely long-haired, gray and white, 17-year-old girl cat, has been adopted!</p>
+<p>Boo has been with her new mom for the past month, but snow storms and Christmas holiday vacations delayed “sealing the deal” until now. Both Boo and her mom agree that this is a great way to kick off 2016! Boo enjoys her mom’s company and really enjoys being brushed. She likes to have “conversations” with her mom, especially when she feels that she should have seconds of canned cat food! Boo decided right off that her Snuggly blanket was great and she settled on it for a nap. Wishing Boo and her mom many happy times together!</p>
+
+<h3>Adoption Bio - 10/23/2015</h3>
+<p>Boo is a 17 year old grey and white DLH non-declawed female feline.  She is a sweet girl, who is in good health, and at our initial vet appointment, the vet was surprised to hear she was 17.  She is quite fluffy which makes her look bigger than her 10.5 pounds.  Boo spent the first 15 years of her life with another cat named Peeka.  Peeka crossed the rainbow bridge, and Boo's mom has also passed on.  Boo is a loyal companion who is now looking for a new human or humans to call her own.  Boo is OK with other cats (she has spent some time in another home with multiple cats since her mom passed).  She loves to be brushed, to sit in windows, and enjoy the sunshine.  She also likes to play with fuzzy mice, and her other toys as well as humans of any age.   Boo has no history of being with or around dogs.  Do you have room in your life for this Boo-tiful gal?</p>
+</div>
+</td>
+
+</tr>
+</tbody>
+</table>
+</body></html>
